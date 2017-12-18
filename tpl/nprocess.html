@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>网页加载进度条</title>
+		
+		<style>
+			html,
+			body {
+				border: none;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#nprogress {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: #f7f7f7;
+				z-index: 999;
+			}
+			
+			.spinner-icon {
+				display: none!important;
+			}
+			
+			.progress {
+				border: 1px solid;
+				padding: 1px;
+			}
+			
+			.splash {
+				position: absolute;
+				top: 40%;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+			
+			.splash img {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				height: 100px;
+				width: 100px;
+			}
+			
+			.card {
+				background-color: #f7f7f7;
+				padding: 20px 25px 15px;
+				margin: 0 auto 25px;
+				width: 380px;
+			}
+			
+			.mybar {
+				background: #29d;
+				height: 10px;
+			}
+			
+			.progress {
+				height: 10px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<iframe id="iframe" style="width: 100%; height: 100%;" src="http://wayou.github.io/SlipHover/" frameborder="0"></iframe>
+		<script type="text" id="splash-template">
+			<div class="splash card">
+				<div role="spinner">
+					<div class="spinner-icon"></div>
+				</div>
+				<p class="lead" style="text-align:center">不要回来，马上走开...</p>
+				<div class="progress">
+					<div class="mybar" role="bar">
+					</div>
+				</div>
+			</div>
+		</script>
+		<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../js/nprogress.js"></script>
+		<script>
+			$(function() {
+				NProgress.configure({
+					template: $('#splash-template').html()
+				});
+				NProgress.start();
+			});
+			$(window).load(function() {
+				NProgress.done();
+			})
+		</script>
+	</body>
+
+</html>

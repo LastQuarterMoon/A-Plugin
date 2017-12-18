@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>表单引导</title>
+
+		<style>
+			body {
+			    width: 600px;
+    			margin: 100px auto;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			ul {
+				padding: 0;
+			}
+			.scrollable {
+				overflow-x: hidden;
+				position: relative;
+				height: 600px;
+			    height: 200px;
+    			text-align: center;
+				border: 1px solid #ddd;
+			}
+			.scrollable .sl-pages{
+				position: absolute;
+				width: 99999px;
+				left: 0;
+				transition: left .3s;
+			}
+			.scrollable .sl-page {
+				width: 600px;
+				float: left;
+			}
+			.scrollable .sl-pages.index1 { left: -600px; }
+			.scrollable .sl-pages.index2 { left: -1200px; }
+			.scrollable .sl-pages.index3 { left: -1800px; }
+			.scrollable .sl-pages.index4 { left: -2400px; }
+			.scrollable .sl-pages.index5 { left: -3000px; }
+			.scrollable .sl-pages.index6 { left: -3600px; }
+			
+			.crumbs ul {
+				height: 40px;
+				list-style: none;
+			}
+			
+			.crumbs ul li:first-child a:before,
+			.crumbs ul li:last-child a:after {
+				display: none;
+			}
+			
+			.crumbs ul li:last-child a {
+				margin-right: 0;
+			}
+			
+			.crumbs ul li a {
+				float: left;
+				margin-right: 27px;
+				display: inline-block;
+				position: relative;
+				height: 40px;
+				padding: 9px 20px 0 20px;
+				text-align: center;
+				background-color: #ececec;
+				color: #777;
+				text-decoration: none;
+				font-size: 16px;
+			}
+			
+			.crumbs ul li a:after {
+				content: "";
+				border-left: 20px solid #ececec;
+				border-top: 20px solid transparent;
+				border-bottom: 20px solid transparent;
+				position: absolute;
+				right: -20px;
+				top: 0;
+			}
+			
+			.crumbs ul li a:before {
+				content: "";
+				border-top: 20px solid #ececec;
+				border-bottom: 20px solid #ececec;
+				border-left: 20px solid transparent;
+				position: absolute;
+				top: 0;
+				left: -20px;
+			}
+			
+			.crumbs ul li.active a {
+				background-color: #d5e6ff;
+				color: #00b2e6;
+			}
+			
+			.crumbs ul li.active a:after {
+				border-left: 20px solid #d5e6ff;
+			}
+			
+			.crumbs ul li.active a:before {
+				border-top: 20px solid #d5e6ff;
+				border-bottom: 20px solid #d5e6ff;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="scrollable">
+			<div class="crumbs sl-header">
+	        	<ul>
+		            <li class="active"><a>第一步</a></li>
+		            <li><a>第二步</a></li>
+		            <li><a>第三步</a></li>
+		            <li><a>第四步</a></li>
+		            <li><a>第五步</a></li>
+		        </ul>
+		    </div>
+		    <div class="sl-pages">
+		    	<div class="sl-page">
+		    		1<br /><br /><br /><br />
+		    		<button type="button" class="sl-next">下一步&nbsp;&gt;</button>
+	    		</div>
+	    		<div class="sl-page">
+	    			2<br /><br /><br /><br />
+	    			<button type="button" class="sl-prve">&lt;&nbsp;上一步</button>
+                	<button type="button" class="sl-next">下一步&nbsp;&gt;</button>
+	    		</div>
+	    		<div class="sl-page">
+	    			3<br /><br /><br /><br />
+	    			<button type="button" class="sl-prve">&lt;&nbsp;上一步</button>
+                	<button type="button" class="sl-next">下一步&nbsp;&gt;</button>
+	    		</div>
+	    		<div class="sl-page">
+	    			4<br /><br /><br /><br />
+	    			<button type="button" class="sl-prve">&lt;&nbsp;上一步</button>
+                	<button type="button" class="sl-next">下一步&nbsp;&gt;</button>
+	    		</div>
+	    		<div class="sl-page">
+	    			5<br /><br /><br /><br />
+	    			<button type="button" class="sl-prve">&lt;&nbsp;上一步</button>
+	    			<button type="button" class="sl-submit">确定</button>
+	    		</div>
+		    </div>
+		</div>
+		
+		<script src="../js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script>
+			$('.sl-next').on('click',function(){
+				//下一步
+				slNext(this);
+			});
+			$('.sl-prve').on('click',function(){
+				//上一步
+				slPrve(this);
+			});
+			
+			//分步填写表单前进后退事件
+			function slNext(e){
+				$('body').animate({scrollTop: '0px'}, 500);
+				var index = $('.sl-next').index(e) + 1;
+				$('.scrollable').css('height', $('.sl-page').eq(index).height() + 80);
+				$('.scrollable .sl-header li').removeClass('active').eq(index).addClass('active');
+				$('.sl-pages').attr('class','sl-pages index' + index);
+			}
+			function slPrve(e){
+				$('body').animate({scrollTop: '0px'}, 500);
+				var index = $('.sl-prve').index(e);
+				$('.scrollable').css('height', $('.sl-page').eq(index).height() + 80);
+				$('.scrollable .sl-header li').removeClass('active').eq(index).addClass('active');
+				$('.sl-pages').attr('class','sl-pages index' + index);
+			}
+		</script>
+	</body>
+
+</html>

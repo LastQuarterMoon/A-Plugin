@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>flex布局</title>
+		<style>
+			* { box-sizing: border-box; }
+			.flex {
+				display: inline-flex;
+				align-items: center;
+				width: 33.3%;
+				float: left;
+				border: 1px solid #ddd;
+				padding: 10px;
+			}
+			.flex img {
+				flex-basis: 80px;
+			}
+			.flex span {
+				padding-left: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程</a>
+		</div><br />
+		<div class="flex">
+			<img src="../img/right_16.png"/>
+			<span>地图地图</span>
+		</div>
+		<div class="flex">
+			<img src="../img/right_16.png"/>
+			<span>地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图地图</span>
+		</div>
+		<div class="flex">
+			<img src="../img/right_16.png"/>
+			<span>地图地图地图地图地图地图地图地图地图地图地图地图地图地图</span>
+		</div>
+		<div class="flex">
+			<img src="../img/right_16.png"/>
+			<span></span>
+		</div>
+		<div class="flex">
+			<img src="../img/right_16.png"/>
+			<span></span>
+		</div>
+		
+	</body>
+</html>

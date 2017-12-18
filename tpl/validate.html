@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<form class="cmxform" id="commentForm" method="get" action="">
+			<fieldset>
+				<legend>输入您的信息。</legend>
+				<p>
+					<label for="cname">用户名(必需, 最小两个字符)</label>
+					<input id="name" minlength="2" type="text" v-rules="required" v-label="用户名">
+				</p>
+				<p>
+					<label for="cemail">E-Mail (必需)</label>
+					<input id="email" type="text" v-rules="required,email" v-label="E-Mail">
+				</p>
+				<p>
+					<label for="curl">URL</label>
+					<input id="url" type="text" minlength="5">
+				</p>
+				<p>
+					<label for="ccomment">备注</label>
+					<textarea id="comment" name="comment"></textarea>
+				</p>
+				<p>
+					<input id="submit" type="button" value="Submit">
+				</p>
+			</fieldset>
+		</form>
+
+		<script src="../js/jquery-1.10.2.min.js"></script>
+		<script src="../js/jquery.validate.js"></script>
+		<script>
+			$("#commentForm").validate({
+				button: '#submit',
+				rules: {
+	    			email: {
+						required: true,
+						email: true
+					}
+	    		},
+				message: {
+					email: {
+						required: '邮箱自定义空验证'
+					}
+				}
+			}, function(){
+				$('body').after('验证通过<br><br>');
+			});
+		</script>
+	</body>
+
+</html>

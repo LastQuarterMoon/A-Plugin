@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>选择器</title>
+		<style>
+			.select-bg{
+			    display:block;
+			    width:200px;
+			    margin:0 auto;
+			    height: 30px;
+			    line-height: 37px;
+			    font-size: 13px;
+			    border:1px #0f7fc7 solid ;
+			    box-sizing:border-box;
+			    cursor: pointer;
+			    position: relative;
+			}
+			
+			.select-bg:after{
+			    content:' ';
+			    position: absolute;
+			    right:6px;
+			    top:50%;
+			    margin-top:-5px;
+			    width:0px;
+			    height:0px;
+			    transition: .2s;
+			    border-left:10px solid transparent;
+			    border-right:10px solid transparent;
+			    border-top:10px solid #0f7fc7;
+			    font-size:0px;
+			    line-height:0px
+			}
+			.select-bg:visited:after {
+				transform: rotate(180deg);
+			}
+			.select-green {
+			    -webkit-appearance: none;
+			    -moz-appearance: none;
+			    appearance: none;
+			    position: relative;
+			    outline: none;
+			    border: 0 none;
+			    position: relative;
+			    padding: 0 0 0 5px;
+			    width: 100%;
+			    color:#0f7fc7;
+			    font-weight: bold;
+			    background: none;
+			    background-color: transparent;
+			    font-size: 13px;
+			    z-index: 99;
+			    overflow: hidden;
+			}
+			
+			select.sel2 {
+	            font-family: "微软雅黑","Microsoft YaHei","Arial","黑体","宋体",sans-serif!important;
+	            width: 252px;
+	            color: #333;
+	            padding: 5px 20px 6px 20px;
+	            outline: none;
+	            border: 1px solid #cecece;;
+	            border-radius: 4px;
+	            box-shadow: 0 2px 7px rgba(0,0,0,.2);
+	            -webkit-appearance:none;
+	               -moz-appearance:none;
+	                    appearance:none;
+	            background: url(../img/select-arrow.png) no-repeat scroll 230px center transparent;
+	            background-color: #fff;
+	        }
+	        select::-ms-expand { display: none; }
+		</style>
+	</head>
+	<body style="text-align: center;">
+		
+		<br /><br />
+		
+		<div class="select-bg">                     
+		    <select class="select-green">
+		        <option value="">高级客户经理</option>
+		        <option value="">中级客户经理</option>
+		    </select>  
+		</div>
+		
+		<br /><br />
+		
+		<select class="sel2">
+			<option value="">局属单位网站</option>
+			<option value="http://www.fmprc.gov.cn/">外交部</option>
+			<option value="http://www.mod.gov.cn/">国防部</option>
+			<option value="http://www.ndrc.gov.cn/">发展改革委</option>
+		</select>
+	</body>
+</html>
